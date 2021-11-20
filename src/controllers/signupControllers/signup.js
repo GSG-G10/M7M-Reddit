@@ -13,11 +13,12 @@ const signup = (req, res) => {
             if (exists)
                 throw { message: exists, cause: 'validation error' };
         }).then(() => createUser(userName, email, firstName, lastName, password))
+        .then(() => sendEmail({subject: 'M7M-Reddit Sign up', text: 'Congrats you are a member of M7M Reddit now !'},email)
+        .catch(err => {throw { message: err, cause: 'validation error' }}))
         .then(() => {
             createCookies(res, userName, true, true);
             res.redirect('/');
-        }).then(() => sendEmail({subject: 'M7M-Reddit Sign up', text: 'Congrats you are a member of M7M Reddit now !'},email)
-        .catch(err => console.log(err)))
+        })
         .catch((err) => {
             if (!err.cause)
                 res.status(500).json({ message: 'internal server error' });
