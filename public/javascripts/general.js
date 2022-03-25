@@ -182,7 +182,7 @@ textType.onclick = () => {
 const postCreate = (e) => {
     e.preventDefault();
     const form = e.target;
-    const type = form.querySelector('.post-type-row-light').querySelector(`.post-type-active-${mode}`).innerHTML;
+    const type = form.querySelector(`.post-type-row-${mode}`).querySelector(`.post-type-active-${mode}`).innerHTML;
     const category = form.querySelector('select').value;
     const title = form.querySelectorAll('input')[2];
     const content = type === 'text' ? form.querySelector('textarea') : form.querySelectorAll('input')[3];
