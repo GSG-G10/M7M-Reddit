@@ -24,7 +24,7 @@ const createPost = (type, mode, upvote, downvote, votes, title, content, postID,
     const bySpan = createElement('span', null, 'by');
     const ProfileLink = createElement('a', [`owner-${mode}`], userName, `/user/profile/${userName}`);
     const timeSpan = createElement('span', null, time ? `${time} ago` : 'now');
-
+    titleLink.target = "_blank";
     compWrapper.appendChild(upvoteBtn);
     compWrapper.appendChild(voteNumSpan);
     compWrapper.appendChild(idInput);
